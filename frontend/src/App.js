@@ -23,7 +23,7 @@ const App = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
-      const uploadPromise = fetch("http://localhost:3001/upload", {
+      const uploadPromise = fetch("https://multer-3w57.onrender.com/upload", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -87,7 +87,7 @@ const App = () => {
     setIsFetching(true); 
 
     try {
-      const response = await fetch("http://localhost:3001/fetchall", {
+      const response = await fetch("https://multer-3w57.onrender.com/fetchall", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -104,7 +104,7 @@ const App = () => {
   };
   const del = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3001/deletenote/${id}`, {
+      const response = await fetch(`https://multer-3w57.onrender.com/deletenote/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

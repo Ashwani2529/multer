@@ -7,7 +7,7 @@ const PORT = 3001;
 app.use(express.json({ limit: '25mb' }));
 
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: 'https://main--image-upload69.netlify.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
