@@ -20,6 +20,8 @@ const App = () => {
       });
       const data = await response.json();
       setImage(data.image);
+      setIsUploaded(true);
+      toast("*Image Uploaded*");
     } catch (error) {
       console.log(error);
     }
@@ -35,8 +37,7 @@ const App = () => {
       });
       const json = await response.json();
       setImagesList(json); 
-      setIsUploaded(true);
-      toast("*Image Uploaded*");
+      
   
     } catch (error) {
       console.error(error.message);
