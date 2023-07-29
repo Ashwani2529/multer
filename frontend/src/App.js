@@ -72,7 +72,7 @@ const App = () => {
       <h2 className="my-3">IMAGES</h2>
       <div className="row my-3" >
         {imagesList.map((img) => (
-          <img key={img._id} src={`https://multer-3w57.onrender.com/${img.imagePath}`} alt="Uploaded" style={{ width: '100%', height: '100%', objectFit: 'contain', margin: '10px' }} />
+          <img key={img._id} src={`https://multer-3w57.onrender.com/${img.imagePath}`} alt="Uploaded" style={{ width: '400px', height: '400px', objectFit: 'contain', margin: '10px' }} />
         ))}
       </div>
     </>
