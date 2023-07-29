@@ -22,6 +22,7 @@ const App = () => {
       setImage(data.image);
       setIsUploaded(true);
       toast("*Image Uploaded*");
+      fetchall();
     } catch (error) {
       console.log(error);
     }
