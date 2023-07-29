@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
-
+import { ToastContainer, toast } from 'react-toastify';
+import CircularProgress from '@mui/material/CircularProgress';
+import 'react-toastify/dist/ReactToastify.css';
 const App = () => {
   const [image, setImage] = useState();
   const [imagesList, setImagesList] = useState([]);
+  const [isUploaded,setIsUploaded]=useState(true);
 
   const handleFormSubmit = async (e) => {
+    setIsUploaded(false);
     e.preventDefault();
     const formData = new FormData(e.target);
     formData.append("image", image);
@@ -30,8 +34,10 @@ const App = () => {
         },
       });
       const json = await response.json();
-      // console.log(json);
       setImagesList(json); 
+      setIsUploaded(true);
+      toast("*Image Uploaded*");
+  
     } catch (error) {
       console.error(error.message);
     }
@@ -57,13 +63,14 @@ const App = () => {
 
           <input type="file" name="image" />
           <button type="submit">Upload</button>
-        </form>
+        </form>{(!isUploaded)?<CircularProgress />:null}
+      <ToastContainer/>
       </div>
 
       <h2 className="my-3">IMAGES</h2>
       <div className="row my-3">
         {imagesList.map((img) => (
-          <img key={img._id} src={`https://multer-3w57.onrender.com/${img.imagePath}`} alt="Uploaded" style={{ width: '200px', height: '200px', objectFit: 'cover', margin: '10px' }} />
+          <img key={img._id} src={`https://multer-3w57.onrender.com/${img.imagePath}`} alt="Uploaded" style={{ width: '200px', height: '200px', objectFit: 'contain', margin: '10px' }} />
         ))}
       </div>
     </>
