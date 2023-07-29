@@ -9,7 +9,7 @@ const PORT = 3001;
 
 // app.use(cors());
 app.use(cors({
-  origin:'http://localhost:3000',
+  origin:'https://main--glowing-semifreddo-32a44b.netlify.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }))
