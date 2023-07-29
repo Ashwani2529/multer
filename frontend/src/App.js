@@ -55,13 +55,13 @@ const App = () => {
       <div>
         <h1>Image Uploader</h1>
         <form onSubmit={handleFormSubmit} action="/upload" method="post" encType="multipart/form-data">
-          <div style={{ width: '300px', height: '300px', border: '1px solid #ccc' }}>
+          {/* <div style={{ width: '300px', height: '300px', border: '1px solid #ccc' }}>
             {image ? (
               <img src={`https://multer-3w57.onrender.com/${image.imagePath}`} alt="Uploaded" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
             ) : (
               'Drag and drop an image here'
             )}
-          </div>
+          </div> */}
 
           <input type="file" name="image" />
           <button type="submit">Upload</button>
@@ -70,9 +70,9 @@ const App = () => {
       </div>
 
       <h2 className="my-3">IMAGES</h2>
-      <div className="row my-3">
+      <div className="row my-3" >
         {imagesList.map((img) => (
-          <img key={img._id} src={`https://multer-3w57.onrender.com/${img.imagePath}`} alt="Uploaded" style={{ width: '200px', height: '200px', objectFit: 'contain', margin: '10px' }} />
+          <img key={img._id} src={`https://multer-3w57.onrender.com/${img.imagePath}`} alt="Uploaded" style={{ width: '100%', height: '100%', objectFit: 'contain', margin: '10px' }} />
         ))}
       </div>
     </>
