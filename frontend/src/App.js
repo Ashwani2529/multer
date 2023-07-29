@@ -10,7 +10,7 @@ const App = () => {
     formData.append("image", image);
 
     try {
-      const response = await fetch('http://localhost:3001/upload', {
+      const response = await fetch('https://multer-3w57.onrender.com/upload', {
         method: 'POST',
         body: formData,
       });
@@ -23,7 +23,7 @@ const App = () => {
 
   const fetchall = async () => {
     try {
-      const response = await fetch("http://localhost:3001/fetchall", {
+      const response = await fetch("https://multer-3w57.onrender.com/fetchall", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -49,7 +49,7 @@ const App = () => {
         <form onSubmit={handleFormSubmit} action="/upload" method="post" encType="multipart/form-data">
           <div style={{ width: '300px', height: '300px', border: '1px solid #ccc' }}>
             {image ? (
-              <img src={`http://localhost:3001/${image.imagePath}`} alt="Uploaded" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+              <img src={`https://multer-3w57.onrender.com/${image.imagePath}`} alt="Uploaded" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
             ) : (
               'Drag and drop an image here'
             )}
