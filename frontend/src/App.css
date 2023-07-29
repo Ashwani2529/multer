@@ -1,4 +1,30 @@
-
+.box{
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.2rem;
+  background-color: rgba(149, 171, 219, 0.87);
+  align-content: center;
+  justify-content: center;
+}
+.container {
+  display: contents;
+}
+.imagebox{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container i{
+  display: flex;
+  align-items:flex-end;
+  /* justify-content: end; */
+}
+#he{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .App {
   
   text-align: center;

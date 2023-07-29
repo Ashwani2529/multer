@@ -1,26 +1,22 @@
 const express = require('express');
-const multer = require('multer');
 const mongoose = require('mongoose');
-// const path = require('path');
 const cors = require('cors');
-// const router = express.Router();
 const app = express();
 const PORT = 3001;
 
-// app.use(cors());
+app.use(express.json({ limit: '25mb' }));
+
 app.use(cors({
-  origin:'https://main--glowing-semifreddo-32a44b.netlify.app',
+  origin: 'http://localhost:3000',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
-}))
+}));
 
-// Connect to MongoDB
 mongoose.connect('mongodb+srv://ashwanix2749:brNEUnJl9b0N9LMF@cluster1.wsuyb84.mongodb.net/upload', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 
-// Create a schema and model for the uploaded image
 const imageSchema = new mongoose.Schema({
   imageName: String,
   imagePath: String,
@@ -28,50 +24,44 @@ const imageSchema = new mongoose.Schema({
 
 const Image = mongoose.model('Image', imageSchema);
 
-// Configure Multer for image uploads
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "uploads/");
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now()+"_"+file.originalname);
-  },
-});
-const upload = multer({ storage: storage });
-
-app.post('/upload', upload.single('image'), async (req, res) => {
-  const newImage = new Image({
-    imageName: req.file.filename,
-    imagePath: req.file.path,
-  });
-
+app.delete("/deletenote/:id", async (req, res) => {
   try {
-    const image = await newImage.save();
-    res.json({ message: 'Image uploaded successfully',"image": image });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ error: 'Failed to save image to the database' });
+    const image = await Image.findByIdAndDelete(req.params.id);
+    if (!image) {
+      return res.status(404).send("Image not found");
+    }
+
+    res.json({ msg: "Image Deleted" });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Server error");
   }
 });
+
 app.get("/fetchall", async (req, res) => {
   try {
-    // console.log("index ki 58 line");
     const img = await Image.find();
-    // console.log(img);
     res.json(img);
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Server Error");
   }
 });
+app.post('/upload', async (req, res) => {
+ const {b64}=req.body;
 
+  try {
+    const image=await Image.create({imageName:b64});
+    res.json({ message: 'Image uploaded successfully',"image": image });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: 'Failed to save image to the database' });
+  }
+});
 
-// Route to serve uploaded images
-app.use('/uploads', express.static('uploads'));
 app.get("/", (req, res) => {
   return res.json( "hello i am 3001" );
 });
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
-// module.exports = router;
