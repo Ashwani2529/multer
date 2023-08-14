@@ -7,12 +7,12 @@ const PORT = 3001;
 app.use(express.json({ limit: '25mb' }));
 
 app.use(cors({
-  origin: 'https://main--image-upload69.netlify.app',
+  origin: 'https://image-upload69.netlify.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-mongoose.connect('mongodb+srv://ashwanix2749:brNEUnJl9b0N9LMF@cluster1.wsuyb84.mongodb.net/upload', {
+mongoose.connect('mongodb+srv://ashwanix2749:tj94HXLQAcOB6XJK@cluster1.wsuyb84.mongodb.net/upload', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

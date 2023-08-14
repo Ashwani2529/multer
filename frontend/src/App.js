@@ -50,7 +50,7 @@ const App = () => {
                 
                 return "Image Uploaded";
               },
-              icon: "✔️", autoClose: 1800,
+              icon: "✔️", autoClose: 1200,
             },
             error: {
               render: (error) => {
@@ -68,17 +68,7 @@ const App = () => {
       fetchall();
     } catch (error) {
       console.error(error);
-      toast.error("Failed to upload image", {
-        position: "top-right",
-        autoClose: 1800,
-        hideProgressBar: false,
-        transition: "flip",
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      });
+      
     }
   };
   
@@ -114,7 +104,7 @@ const App = () => {
       const data = await response.json();
       toast.error('Deleted!', {
         position: "top-right",
-        autoClose: 1800,
+        autoClose: 1200,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: false,
